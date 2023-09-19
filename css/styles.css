@@ -1,6 +1,33 @@
-body {
-  background-color: #eae9e8;
+/* Global */
+:root {
+  --light-gray: #eae9e7;
+  --light-gray-2: #bebcba;
+  --gray: #808080;
+  --dark-gray: #3f3e3e;
+  --yellow: #f5c300;
+  --light-yellow: #f6d846;
+  --blue: #0265bb;
+  --orange: #d96b4c;
+  --white: #fcfcfc;
 }
+
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+body {
+  background-color: var(--light-gray);
+  font-family: 'Roboto Condensed', sans-serif;
+  list-style-type: none;
+}
+
+/* Page laoyout*/
 
 .page-container {
   display: grid;
@@ -8,13 +35,44 @@ body {
       "main-header main-header"
       "main-nav page__content"
       "cart page__content";
-  grid-template-columns: 40% 60%;
+  grid-template-columns: 1fr 85%;
+  grid-template-rows: auto auto 1fr;
+  padding: 2rem 1rem;
 }
 
 .main-header {
   grid-area: main-header;
   display: flex;
   justify-content: center;
+  margin-bottom: 1.5rem;
+}
+
+.main-nav {
+  grid-area: main-nav;
+  background-color: var(--white);
+  min-width: 250px;
+  height: fit-content;
+}
+
+.cart {
+  grid-area: cart;
+  background-color: var(--light-yellow);
+  height: fit-content;
+  margin-top: 3rem;
+}
+
+.page__content {
+  grid-area: page__content;
+  padding: 0.5rem 2rem;
+}
+
+
+/* Header */
+.main-header h1 {
+  font-size: 2.4rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--dark-gray);
 }
 
 .main-header__text {
@@ -22,38 +80,272 @@ body {
   width: fit-content;
 }
 
-.main-nav {
-  grid-area: main-nav;
+
+/* Navigation */
+
+.category-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0;
+  font-size: 1.4rem;
+  font-weight: 700;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
-.cart {
-  grid-area: cart;
+.category-nav__item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 3.2rem;
+  width: 100%;
+  color: var(--dark-gray);
+  text-decoration: none;
 }
 
-.page__content {
-  grid-area: page__content;
+.category-nav__item a {
+  color: inherit;
 }
 
+.category-nav__item--active {
+  background-color: var(--yellow);
+  color: var(--white);
+}
+
+
+/* Product card */
+
+.product-catalogue__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  width: 205px;
+  height: fit-content;
+  gap: 0.7rem;
+}
+
+.product-card__brand {
+  width: 205px;
+  height: 38px;
+}
+
+.product-card__name {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--dark-gray);
+  text-transform: capitalize;
+}
+
+.product-card-info {
+  display: flex;
+  flex-basis: 100%;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+}
+
+.product-card__photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 180px;
+  height: 180px;
+  background-color: var(--yellow);
+  border-radius: 50%;
+}
+
+.product-card-info__ingredients {
+  width: 100%;
+  padding: 0.4rem 0 0.6rem;
+  border-top: var(--dark-gray) solid 3px;
+  border-bottom: var(--dark-gray) solid 3px;
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.product-ingredient {
+  color: var(--blue);
+  border-bottom: var(--blue) solid 1px;
+}
+
+.product-card-info__price {
+  margin-top: 0.5rem;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--orange);
+}
+
+.product-card-info__count {
+  margin-bottom: 0.5rem;
+}
+
+.count-control {
+  display: flex;
+  align-items: center;
+}
+
+.product-card-info__count-label {
+  display: block;
+  margin: 0.8rem 0 0.2rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  color: var(--dark-gray);
+}
+
+.product-count-button {
+  border-radius: 50%;
+  border: var(--light-gray-2) 2px solid;
+  color: var(--light-gray-2);
+  background-color: var(--white);
+  font-size: 1.2rem;
+  padding: 0;
+  width: 25px;
+  height: 25px;
+  line-height: 19px;
+  cursor: pointer;
+}
+
+.product-count-input {
+  margin: 0 1.2rem;
+  height: 25px;
+  /* width: 2.8rem; */
+  width: 50px;
+  border: var(--light-gray-2) 2px solid;
+  border-radius: 0.3rem;
+  outline: none;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: black;
+  text-align: center;
+}
+
+/* Chrome, Safari, Edge, Opera */
+product-count-input::-webkit-outer-spin-button,
+product-count-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+product-count-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.product-count-input::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: black;
+  opacity: 1;
+  /* Firefox */
+}
+
+.product-count-input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  color: black;
+}
+
+.product-count-input::-ms-input-placeholder {
+  /* Microsoft Edge */
+  color: black;
+}
+
+/* Cart */
+
+.cart__title {
+  display: flex;
+  justify-content: center;
+  padding-top: 1.2rem;
+  background-color: var(--yellow);
+}
+
+.cart-title__text {
+  margin-left: -1.5rem;
+  align-self: baseline;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: 2px;
+}
+
+.cart-logo {
+  margin-top: auto;
+  display: inline-block;
+  width: 77px; 
+  height: 50px;
+}
+
+.cart__content {
+  padding: 0.5rem 1rem 0;
+  font-weight: 700;
+  color: var(--dark-gray);
+}
 
 .cart__checkout-button {
+  display: block;
+  margin: 1.5rem auto;
   width: 12rem;
   height: 2rem;
 }
 
 .product-card-info__to-cart-button {
-  width: 9rem;
-  height: 2rem;
+  display: block;
+  width: 150px;
+  height: 40px;
 }
+
+/* Cart Table */
+
+.cart-table {
+  width: 100%;
+}
+
+.cart-table__header {
+  width: 100%;
+}
+
+.cart-table__header th {
+  padding: 0.5rem 0;
+  border-bottom: var(--yellow) 3px solid;
+}
+
+.cart-table__name {
+  text-align: start;
+}
+
+.cart-table__count {
+  text-align: end;
+}
+
+.cart-table__cart-overall {
+  display: inline-block;
+  margin-top: 1rem;
+  width: 100%;
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+/* Button */
 
 .button-primary {
   outline: 0;
   border: 0;
   border-bottom: 1px solid black;
   border-radius: 3px;
-  font: 1em sans-serif;
-  font-weight: 900;
+  font-size: 1.2rem;
+  font-weight: 700;
   color: white;
   text-transform: uppercase;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
 }
 
 .button-primary--yellow {
@@ -62,4 +354,21 @@ body {
 
 .button-primary--grey{
   background-color: #807979;
+}
+
+/* Util classes */
+.visually-hidden:not(:focus):not(:active),
+input[type="checkbox"].visually-hidden,
+input[type="radio"].visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  -webkit-clip-path: inset(100%);
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 }

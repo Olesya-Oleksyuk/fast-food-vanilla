@@ -5,8 +5,18 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>FastFood Vanilla</title>
-    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/reset.css" />
     <link rel="stylesheet" href="css/styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script
+      src="https://kit.fontawesome.com/f907397b57.js"
+      crossorigin="anonymous"
+    ></script>
   </head>
   <body>
     <div class="page-container">
@@ -17,7 +27,9 @@
         <ul class="category-nav">
           <li class="category-nav__item"><a href="#">Блины</a></li>
           <li class="category-nav__item"><a href="#">Шаурма</a></li>
-          <li class="category-nav__item"><a href="#">Сэндвичи</a></li>
+          <li class="category-nav__item category-nav__item--active">
+            <a href="#">Сэндвичи</a>
+          </li>
           <li class="category-nav__item"><a href="#">Бургеры</a></li>
           <li class="category-nav__item"><a href="#">Курица & Картофель</a></li>
           <li class="category-nav__item"><a href="#">Тортилья & Салаты</a></li>
@@ -25,23 +37,22 @@
         </ul>
       </nav>
       <section class="cart">
-        <h3 class="cart__title">
+        <h2 class="cart__title">
           <span class="cart-logo">
-            <img src="img/cart-logo.jpg" width="50" height="50" alt="Корзина" />
+            <img src="img/cart-logo.png" width="77" height="50" alt="Корзина" />
           </span>
-          <span class="cart-title__text"></span>
-        </h3>
+          <span class="cart-title__text">Корзина</span>
+        </h2>
         <div class="cart__content">
           <table class="cart-table">
             <tr class="cart-table__header">
-              <th>Название</th>
-              <th>Количество</th>
-            </tr>
-            <tr>
-              <td>null</td>
-              <td>0</td>
+              <th class="cart-table__name">Название</th>
+              <th class="cart-table__count">Количество</th>
             </tr>
           </table>
+          <span class="cart-table__cart-overall">
+            Итого:&nbsp;<b class="cart-overall__price">0</b>&nbsp;руб.
+          </span>
           <button
             type="submit"
             class="cart__checkout-button button-primary button-primary--grey"
@@ -55,45 +66,363 @@
           <h2 class="visually-hidden">Каталог продуктов</h2>
           <ul class="product-catalogue__list">
             <li class="product-card">
-              <p class="product-card__brand">
+              <span class="product-card__brand">
                 <img
-                  src="img/subway-logo.jpg"
-                  width="220"
-                  height="70"
+                  src="img/subway-logo.png"
+                  width="205"
+                  height="38"
                   alt="Subway лого»"
                 />
-              </p>
+              </span>
               <p class="product-card__photo">
                 <img
-                  src="img/sandwich-vegan.jpg"
-                  width="220"
-                  height="70"
+                  src="img/sandwich1.png"
+                  width="162"
+                  height="162"
                   alt="Овощной сендвич»"
                 />
               </p>
               <h3>
-                <span class="catalog-category">Овощной</span>
+                <span class="product-card__name">Овощной</span>
               </h3>
               <div class="product-card-info">
                 <p class="product-card-info__ingredients">
-                  Соус и овощи на выбор
+                  <span class="product-ingredient">
+                    Соус и овощи на выбор
+                  </span>
                 </p>
-                <p class="product-card-info__price">
+                <span class="product-card-info__price">
+                  Цена:
                   <b>110 руб.</b>
-                </p>
-                <p class="product-card-info__count">
-                  <button
-                    class="product-count-button product-count-button--less"
+                </span>
+                <div class="product-card-info__count">
+                  <label
+                    for="product-count"
+                    class="product-card-info__count-label"
+                    >Количество</label
                   >
-                    -
-                  </button>
-                  <input placeholder="1" />
-                  <button
-                    class="product-count-button product-count-button--more"
-                  >
-                    +
-                  </button>
+                  <div class="count-control">
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input
+                      placeholder="1"
+                      type="text"
+                      id="product-count"
+                      name="product-count"
+                      class="product-count-input"
+                      readonly
+                    />
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="product-card-info__to-cart-button button-primary button-primary--yellow"
+                  type="submit"
+                >
+                  В корзину
+                </button>
+              </div>
+            </li>
+            <li class="product-card">
+              <span class="product-card__brand">
+                <img
+                  src="img/subway-logo.png"
+                  width="205"
+                  height="38"
+                  alt="Subway лого»"
+                />
+              </span>
+              <p class="product-card__photo">
+                <img
+                  src="img/sandwich2.png"
+                  width="162"
+                  height="162"
+                  alt="Cабвэй клаб"
+                />
+              </p>
+              <h3>
+                <span class="product-card__name">Cабвэй клаб</span>
+              </h3>
+              <div class="product-card-info">
+                <p class="product-card-info__ingredients">
+                  <span class="product-ingredient">
+                    Индейка, ветчина, ростфиб, соус и овощи на выбор
+                  </span>
                 </p>
+                <span class="product-card-info__price">
+                  Цена:
+                  <b>180 руб.</b>
+                </span>
+                <div class="product-card-info__count">
+                  <label
+                    for="product-count"
+                    class="product-card-info__count-label"
+                    >Количество</label
+                  >
+                  <div class="count-control">
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input
+                      placeholder="1"
+                      type="text"
+                      id="product-count"
+                      name="product-count"
+                      class="product-count-input"
+                      readonly
+                    />
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="button-primary button-primary--yellow product-card-info__to-cart-button"
+                  type="submit"
+                >
+                  В корзину
+                </button>
+              </div>
+            </li>
+            <li class="product-card">
+              <span class="product-card__brand">
+                <img
+                  src="img/subway-logo.png"
+                  width="205"
+                  height="38"
+                  alt="Subway лого»"
+                />
+              </span>
+              <p class="product-card__photo">
+                <img
+                  src="img/sandwich1.png"
+                  width="162"
+                  height="162"
+                  alt="Альпийский сендвич»"
+                />
+              </p>
+              <h3>
+                <span class="product-card__name">Альпийский</span>
+              </h3>
+              <div class="product-card-info">
+                <p class="product-card-info__ingredients">
+                  <span class="product-ingredient">
+                    Альпийские колбаски 2шт, Соус и овощи на выбор
+                  </span>
+                </p>
+                <span class="product-card-info__price">
+                  Цена:
+                  <b>180 руб.</b>
+                </span>
+                <div class="product-card-info__count">
+                  <label
+                    for="product-count"
+                    class="product-card-info__count-label"
+                    >Количество</label
+                  >
+                  <div class="count-control">
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input
+                      placeholder="1"
+                      type="text"
+                      id="product-count"
+                      name="product-count"
+                      class="product-count-input"
+                      readonly
+                    />
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="button-primary button-primary--yellow product-card-info__to-cart-button"
+                  type="submit"
+                >
+                  В корзину
+                </button>
+              </div>
+            </li>
+            <li class="product-card">
+              <span class="product-card__brand">
+                <img
+                  src="img/subway-logo.png"
+                  width="205"
+                  height="38"
+                  alt="Subway лого»"
+                />
+              </span>
+              <p class="product-card__photo">
+                <img
+                  src="img/sandwich3.png"
+                  width="162"
+                  height="162"
+                  alt="Другой сендвич»"
+                />
+              </p>
+              <h3>
+                <span class="product-card__name">Другой</span>
+              </h3>
+              <div class="product-card-info">
+                <p class="product-card-info__ingredients">
+                  <span class="product-ingredient">
+                    Соус и овощи на выбор
+                  </span>
+                </p>
+                <span class="product-card-info__price">
+                  Цена:
+                  <b>110 руб.</b>
+                </span>
+                <div class="product-card-info__count">
+                  <label
+                    for="product-count"
+                    class="product-card-info__count-label"
+                    >Количество</label
+                  >
+                  <div class="count-control">
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input
+                      placeholder="1"
+                      type="text"
+                      id="product-count"
+                      name="product-count"
+                      class="product-count-input"
+                      readonly
+                    />
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="product-card-info__to-cart-button button-primary button-primary--yellow"
+                  type="submit"
+                >
+                  В корзину
+                </button>
+              </div>
+            </li>
+            <li class="product-card">
+              <span class="product-card__brand">
+                <img
+                  src="img/subway-logo.png"
+                  width="205"
+                  height="38"
+                  alt="Subway лого»"
+                />
+              </span>
+              <p class="product-card__photo">
+                <img
+                  src="img/sandwich3.png"
+                  width="162"
+                  height="162"
+                  alt="Овощной сендвич»"
+                />
+              </p>
+              <h3>
+                <span class="product-card__name">Другой</span>
+              </h3>
+              <div class="product-card-info">
+                <p class="product-card-info__ingredients">
+                  <span class="product-ingredient">
+                    Соус и овощи на выбор
+                  </span>
+                </p>
+                <span class="product-card-info__price">
+                  Цена:
+                  <b>110 руб.</b>
+                </span>
+                <div class="product-card-info__count">
+                  <label
+                    for="product-count"
+                    class="product-card-info__count-label"
+                    >Количество</label
+                  >
+                  <div class="count-control">
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input
+                      placeholder="1"
+                      type="text"
+                      id="product-count"
+                      name="product-count"
+                      class="product-count-input"
+                      readonly
+                    />
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
+                <button
+                  class="product-card-info__to-cart-button button-primary button-primary--yellow"
+                  type="submit"
+                >
+                  В корзину
+                </button>
+              </div>
+            </li>
+            <li class="product-card">
+              <span class="product-card__brand">
+                <img
+                  src="img/subway-logo.png"
+                  width="205"
+                  height="38"
+                  alt="Subway лого»"
+                />
+              </span>
+              <p class="product-card__photo">
+                <img
+                  src="img/sandwich4.png"
+                  width="162"
+                  height="162"
+                  alt="Другой сендвич»"
+                />
+              </p>
+              <h3>
+                <span class="product-card__name">Другой</span>
+              </h3>
+              <div class="product-card-info">
+                <p class="product-card-info__ingredients">
+                  <span class="product-ingredient">
+                    Соус и овощи на выбор
+                  </span>
+                </p>
+                <span class="product-card-info__price">
+                  Цена:
+                  <b>110 руб.</b>
+                </span>
+                <div class="product-card-info__count">
+                  <label
+                    for="product-count"
+                    class="product-card-info__count-label"
+                    >Количество</label
+                  >
+                  <div class="count-control">
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-minus"></i>
+                    </button>
+                    <input
+                      placeholder="1"
+                      type="text"
+                      id="product-count"
+                      name="product-count"
+                      class="product-count-input"
+                      readonly
+                    />
+                    <button class="product-count-button">
+                      <i class="fa-solid fa-plus"></i>
+                    </button>
+                  </div>
+                </div>
                 <button
                   class="product-card-info__to-cart-button button-primary button-primary--yellow"
                   type="submit"
