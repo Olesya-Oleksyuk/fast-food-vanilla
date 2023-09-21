@@ -9,11 +9,17 @@
   --blue: #0265bb;
   --orange: #d96b4c;
   --white: #fcfcfc;
+
+  --font-size-default: 16px
 }
 
 * {
   box-sizing: border-box;
   text-decoration: none;
+}
+
+html {
+  font-size: var(--font-size-default);
 }
 
 button {
